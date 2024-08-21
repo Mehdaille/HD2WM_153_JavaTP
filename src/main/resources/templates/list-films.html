@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,6 +79,25 @@
                             </button>
                         </div>
                     </div>
+                    <h3>Version LI</h3>
+                    <ul>
+                        <!--  Pour chaque aliment dans la liste on va générer un <li></li> et on prendra son nom-->
+                        <li th:each="film: ${films}"
+                            th:text="${'id: ' + film.id + ' titre : ' + film.title + ' année : ' + film.year + ' durée : ' + film.duration + ' min synopsis : ' + film.synopsis}"></li>
+                    </ul>
+
+                    <h3>Version DIV</h3>
+                    <div th:each="film: ${films}">
+                        <p th:text="${'ID : ' + film.id}"></p>
+                        <p th:text="${'Titre : '+ film.title}"></p>
+                        <p th:text="${'Année : ' + film.year}"></p>
+                        <p th:text="${'Durée :' + film.duration}"></p>
+                        <p th:text="${'Synopsis : ' + film.synopsis}"></p>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
