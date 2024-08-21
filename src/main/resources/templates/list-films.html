@@ -2,23 +2,77 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="vendor/uikit/css/uikit.min.css"/>
+
     <!-- UIkit JS -->
     <script src="vendor/uikit/js/uikit.min.js"></script>
     <script src="vendor/uikit/js/uikit-icons.min.js"></script>
-    <title>helloworld
-    </title>
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/css/all.min.css"/>
+
+    <!-- My Theme -->
+    <link rel="stylesheet" href="eni-theme.css"/>
+
+    <title>Title</title>
+
 </head>
-<body>
-<div>
-    <ul>
-        <li>
-            <a href="details-film">Les Visiteurs</a>
-        </li>
-    </ul>
-</div>
+<body class="eni-page-background">
+<div class="uk-container">
+    <h1>Films</h1>
+    <div class="uk-child-width-1-1@m" uk-grid>
+        <div>
+            <div class="uk-card uk-card-default">
+                <div class="uk-card-media-top uk-cover-container">
+                    <img src="18659413.jpg" alt="affiche du film" uk-cover>
+                    <canvas width="600" height="400"></canvas>
+                </div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">Les Visiteurs</h3>
+                    <div>
+                        <i class="fa fa-star eni-star-check"></i>
+                        <i class="fa fa-star eni-star-check"></i>
+                        <i class="fa fa-star-half eni-star-check"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolorum explicabo fuga ipsum
+                        iusto,
+                        pariatur
+                        perferendis quas quidem sint voluptatibus?</p>
+                    <button class="uk-button uk-button-primary" onclick="window.location.href = 'details-film'">Voir
+                        infos
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="uk-child-width-1-1@m" uk-grid>
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top uk-cover-container">
+                        <img src="18659413.jpg" alt="affiche du film" uk-cover>
+                        <canvas width="600" height="400"></canvas>
+                    </div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-card-title">Les Visiteurs</h3>
+                        <div>
+                            <i class="fa fa-star eni-star-check"></i>
+                            <i class="fa fa-star eni-star-check"></i>
+                            <i class="fa fa-star-half eni-star-check"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolorum explicabo fuga
+                            ipsum iusto,
+                            pariatur
+                            perferendis quas quidem sint voluptatibus?</p>
+                        <button class="uk-button uk-button-primary" onclick="window.location.href = 'details-film'">Voir
+                            infos
+                        </button>
+                    </div>
+                </div>
 </body>
 </html>

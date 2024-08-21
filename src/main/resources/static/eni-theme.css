@@ -1,0 +1,18 @@
+html, body {
+    height: 100%;
+}
+
+.eni-page-background {
+    width: 100%;
+    height: 100%;
+    background-image: url("abstract-gradient-sky-background-with-cotton-candy-clouds.jpg");
+    background-size: cover;
+}
+
+.eni-common-page-padding {
+    padding: 3rem
+}
+
+.eni-star-check {
+    color: orange;
+}

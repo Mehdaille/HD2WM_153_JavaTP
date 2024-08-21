@@ -9,6 +9,4 @@ public class EniAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EniAppApplication.class, args);
 	}
-
-
 }
