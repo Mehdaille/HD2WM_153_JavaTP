@@ -20,4 +20,12 @@ public class FilmManager {
 
         return films;
     }
+
+    public Film getFilmById(long id) {
+        //Récupère un film de la DAO
+        Film film = daofilm.selectFilmById(id);
+
+        return film;
+    }
+
 }
