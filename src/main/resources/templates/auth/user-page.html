@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="fr"
+      layout:decorate="~{v3/base}">
+<!-- Surcharger le title -->
+<title layout:fragment="title">Compte</title>
+
+<body>
+
+<!-- Surcharger le contenu -->
+<div layout:fragment="content">
+
+    <h1 th:text="${'Bonjour ' + user.email}"></h1>
+
+
+
+</div>
+
+</body>
+</html>

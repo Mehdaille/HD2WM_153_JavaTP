@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="fr"
+      layout:decorate="~{v3/base}">
+<!-- Surcharger le title -->
+<title layout:fragment="title">Liste des films</title>
+<body>
+<div layout:fragment="content">
+    <div class="eni-common-page-padding">
+        <div class="uk-container">
+            <h1>Détail du film</h1>
+            <div class="uk-margin">
+                <button class="uk-button uk-button-primary" onclick="window.location.href = '/'">Accueil
+                </button>
+            </div>
+            <div class="uk-margin">
+                <button class="uk-button uk-button-primary" onclick="window.location.href = '/list-films'">Tous les
+                    films
+                </button>
+            </div>
+            <div class="uk-child-width-1-1@m" uk-grid>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top uk-cover-container">
+                        <div class="uk-card-body">
+                            <p th:text="'Titre : ' + ${film.title}"></p>
+                            <p th:text="'Année : ' + ${film.year}"></p>
+                            <p th:text="'Durée : ' + ${film.duration} + ' min'"></p>
+                            <p th:text="'Note : ' + ${film.note}"></p>
+                            <p th:text="'Synopsis : ' + ${film.synopsis}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

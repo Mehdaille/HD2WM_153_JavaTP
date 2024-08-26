@@ -16,3 +16,14 @@ html, body {
 .eni-star-check {
     color: orange;
 }
+
+.uk-navbar-container.eni-navbar-gradient {
+}
+
+.eni-navbar-btn-padding{
+    padding: 0 1rem;
+}
+
+.eni-navbar-logo{
+    height: 30px;
+}

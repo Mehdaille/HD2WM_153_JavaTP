@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="fr"
+      layout:decorate="~{v3/base}">
+<!-- Surcharger le title -->
+<title layout:fragment="title">Compte</title>
+
+<body>
+<!-- Surcharger le contenu -->
+<div layout:fragment="content">
+    <p th:text="${'Compte : ' + user.email}"></p>
+<div class="uk-padding-large">
+<p class="uk-alert-danger">Vous êtes déja connété(e)</p>
+</div>
+</div>
+</body>
+</html>

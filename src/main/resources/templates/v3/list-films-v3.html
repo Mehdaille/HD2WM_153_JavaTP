@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="fr"
+      layout:decorate="~{v3/base}">
+<!-- Surcharger le title -->
+<title layout:fragment="title">Liste des films</title>
+
+<body>
+<div layout:fragment="content">
+<div class="eni-common-page-padding">
+    <div class="uk-container">
+        <h1>Films</h1>
+        <button class="uk-button uk-button-primary" onclick="window.location.href ='/'">Accueil
+        </button>
+        <div class="uk-child-width-1-1@m" uk-grid>
+            <div th:each="film:${films}">
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top uk-cover-container">
+                        <img src="18659413.jpg" alt="affiche du film" uk-cover>
+                        <canvas width="600" height="400"></canvas>
+                    </div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-card-title" th:text="${film.title}"></h3>
+                        <div>
+                            <span th:text="${'Année : ' + film.year}"></span>
+                            -
+                            <span th:text="${'Durée : ' + film.duration + ' min'}"> min</span>
+                        </div>
+                        <div>
+                            <!--Remplace les étoiles par une fonction qui n'affiche que 3 étoiles sur 5, voir le controller-->
+                            <i th:each="star:${maxStars}" class="fa fa-star"
+                               th:classappend="${film.getNote() >= star} ? 'eni-star-check' : ''"></i>
+                            <!--Version en dure :-->
+                            <!--<i class="fa fa-star eni-star-check"></i>-->
+                            <!--<i class="fa fa-star eni-star-check"></i>-->
+                            <!--<i class="fa fa-star eni-star-check"></i>-->
+                            <!--<i class="fa fa-star"></i>-->
+                            <!--<i class="fa fa-star"></i>-->
+                        </div>
+                        <p th:text="${film.synopsis}"></p>
+                        <a th:href="@{'/details-film/' + ${film.id}}">Voir infos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<!--On importe le header-->
+<div th:include="/v2/header"></div>
+
+<body class="eni-page-background">
+<div class="eni-common-page-padding">
+  <div class="uk-container">
+    <h1>Erreur</h1>
+    <div class="uk-child-width-1-1@m" uk-grid>
+      <div class="uk-card-media-top uk-cover-container">
+        <div class="uk-card-body">
+          <p>Le film que vous essayez d'afficher n'existe pas</p>
+          <div class="uk-margin uk-animation-toggle" tabindex="0">
+            <button class="uk-card uk-card-default uk-card-body uk-animation-scale-down uk-button uk-button-primary"
+                    onclick="window.location.href = '/'">
+              Accueil
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

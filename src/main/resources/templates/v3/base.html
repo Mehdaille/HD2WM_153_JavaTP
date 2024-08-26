@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- UIkit JS -->
+    <script src="/vendor/uikit/js/uikit.min.js"></script>
+    <script src="/vendor/uikit/js/uikit-icons.min.js"></script>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/vendor/uikit/css/uikit.min.css"/>
+    <!-- Fontamwesome CSS -->
+    <link rel="stylesheet" href="/vendor/fontawesome-free-5.15.4-web/css/all.min.css">
+    <!--My theme CSS-->
+    <link rel="stylesheet" href="/eni-theme.css">
+    <!-- Css supplementaire -->
+    <div layout:fragment="css-files"></div>
+
+    <title layout:fragment="title">Title</title>
+</head>
+<body class="uk-container uk-height-viewport uk-background-cover eni-page-background">
+
+<nav class="uk-navbar-container eni-navbar-gradient" uk-navbar>
+    <div class="uk-navbar-left eni-navbar-btn-padding">
+        <a class="uk-navbar-toggle" href="#" uk-toggle="target: #offcanvas-nav">
+            <span uk-navbar-toggle-icon></span>
+        </a>
+    </div>
+
+    <div class="uk-navbar-center">
+        <a class="uk-navbar-item uk-logo" href="/list-films">
+            <img src="/logo.png" class="eni-navbar-logo" alt="Logo">
+        </a>
+    </div>
+
+    <div class="uk-navbar-right eni-navbar-btn-padding">
+<!--affichage d'un bouton si loggedUser == null => c'est à dire si pas connécté-->
+        <a th:if="${loggedUser == null}" class="uk-icon-button" href="/login"><i class="fas fa-sign-in-alt"></i></a>
+
+        <!--affichage d'un bouton si loggedUser != null => c'est à dire si déjà connécté-->
+        <a th:if="${loggedUser}" class="uk-icon-button" href="/logout"><i class="fas fa-door-open"></i></a>
+    </div>
+</nav>
+<div id="offcanvas-nav" uk-offcanvas="mode: reveal; overlay: true">
+    <div class="uk-offcanvas-bar">
+        <ul class="uk-nav uk-nav-default">
+            <li class="uk-active"><a href="/">Accueil</a></li>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Flash message conditionnel -->
+<!-- Affiche un message temporaire si il existe -->
+<div th:if="${flashMessage}" class="uk-padding-small">
+    <div class="uk-alert-primary" uk-alert>
+        <a href class="uk-alert-close" uk-close></a>
+        <p th:text="${flashMessage}"></p>
+    </div>
+</div>
+
+
+
+<!--Partie surchargable-->
+<div layout:fragment="content">coucou toutes les pages</div>
+
+<!--FOOTER-->
+<footer class="uk-section uk-section-small uk-section-muted">
+    <div class="uk-container">
+        <p class="uk-text-small uk-text-center">Copyright 2024 - <a
+                href="https://github.com/zzseba78/Kick-Off">Created by Chocolatine</a> | Built with <a
+                href="http://getuikit.com" title="Visit UIkit 3 site" target="_blank" data-uk-tooltip><span
+                data-uk-icon="uikit"></span></a></p>
+    </div>
+</footer>
+<!--/FOOTER-->
+
+</body>
+</html>

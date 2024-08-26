@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="fr"
+      layout:decorate="~{v3/base}">
+<!-- Surcharger le title -->
+<title layout:fragment="title">Se connecter</title>
+
+<body>
+
+<!-- Surcharger le contenu -->
+<div layout:fragment="content">
+    <div class="uk-container">
+
+        <h1 class="uk-heading-divider uk-text-center">Se Connecter</h1>
+
+        <form th:object="${user}" method="post" action="user">
+
+            <!--champs email-->
+            <div class="uk-margin">
+                <input th:field="*{email}" type="email" class="uk-input" placeholder="Saisir email"/>
+            </div>
+
+            <!--champs password-->
+            <div class="uk-margin">
+                <input th:field="*{password}" type="password" class="uk-input" placeholder="Saisir email"/>
+            </div>
+
+            <!--Bouton submit-->
+            <div class="uk-margin">
+                <input value="Se connecter" type="submit" class="uk-button-primary uk-width">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
