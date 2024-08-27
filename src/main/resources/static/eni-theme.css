@@ -1,13 +1,18 @@
+
 html, body {
     height: 100%;
-}
-
-.eni-page-background {
-    width: 100%;
-    height: 100%;
-    background-image: url("abstract-gradient-sky-background-with-cotton-candy-clouds.jpg");
+    margin: 0;
+    background: url('abstract-gradient-sky-background-with-cotton-candy-clouds.jpg') no-repeat center center fixed;
     background-size: cover;
 }
+
+
+/*.eni-page-background {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-image: url("abstract-gradient-sky-background-with-cotton-candy-clouds.jpg");*/
+/*    background-size: cover;*/
+/*}*/
 
 .eni-common-page-padding {
     padding: 3rem
@@ -20,10 +25,10 @@ html, body {
 .uk-navbar-container.eni-navbar-gradient {
 }
 
-.eni-navbar-btn-padding{
+.eni-navbar-btn-padding {
     padding: 0 1rem;
 }
 
-.eni-navbar-logo{
+.eni-navbar-logo {
     height: 30px;
 }
