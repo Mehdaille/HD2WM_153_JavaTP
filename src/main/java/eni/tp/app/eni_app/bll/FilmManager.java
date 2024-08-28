@@ -27,4 +27,10 @@ public class FilmManager {
         return film;
     }
 
+    /**Appelera la DAO pour sauvegarder un Film
+    @param film
+     */
+    public void saveFilm (Film film) {
+        daofilm.save(film);
+    }
 }

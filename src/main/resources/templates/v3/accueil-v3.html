@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="fr"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en"
       layout:decorate="~{v3/base}">
 <!-- Surcharger le title -->
 <title layout:fragment="title">Accueil</title>
@@ -9,8 +9,8 @@
 
 <!-- Surcharger le content -->
 <div layout:fragment="content">
-    <h1>Accueil</h1>
-    <p>Bienvenue sur le site Filmovie App</p>
+    <h1 th:text="#{title.home}"></h1>
+    <p th:text="#{message.welcome}"></p>
 </div>
 
 </body>

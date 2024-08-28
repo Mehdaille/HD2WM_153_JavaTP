@@ -8,5 +8,7 @@ public interface IDAOFilm {
     List<Film> selectFilms();
 
     Film selectFilmById(long id);
+
+   void save (Film film);
 }
 

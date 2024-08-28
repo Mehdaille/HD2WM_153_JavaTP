@@ -5,16 +5,21 @@ import eni.tp.app.eni_app.bll.FilmManager;
 import eni.tp.app.eni_app.bo.Film;
 import eni.tp.app.eni_app.bo.User;
 import eni.tp.app.eni_app.ihm.EniFlashMessage;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+
 
 //Le controller hérite d'un profil utilisateur
 @SessionAttributes({"loggedUser"})
@@ -23,6 +28,21 @@ public class FilmController {
 
     @Autowired
     FilmManager filmManager;
+
+    @Autowired
+    LocaleResolver localeResolver;
+
+    @GetMapping("change-lang/{lang}")
+    public String changeLang(@PathVariable("lang") String lang, HttpServletRequest request, HttpServletResponse response) {
+        //Instancier la clé de la lang
+        Locale locale = Locale.forLanguageTag(lang);
+
+        //Appliquer la langue (en Anglais)
+        localeResolver.setLocale(request, response, locale);
+
+        //Rediriger
+        return "redirect:/";
+    }
 
     //"" = ira à la racine de l'url donc => http://localhost:8080
     @GetMapping("")
@@ -82,7 +102,7 @@ public class FilmController {
     public String showAddFilm(Model model) {
 
         //Instancier un film apr défaut
-        Film film = new Film(4,"Astérix et Obélix : Mission Cléopâtre", 2023, 112,"Cléopâtre, la reine d’Égypte, décide, pour défier l'Empereur romain Jules César, de construire en trois mois un palais somptueux en plein désert. Si elle y parvient, celui-ci devra concéder publiquement que le peuple égyptien est le plus grand de tous les peuples. Pour ce faire, Cléopâtre fait appel à Numérobis, un architecte d'avant-garde plein d'énergie. S'il réussit, elle le couvrira d'or. S'il échoue, elle le jettera aux crocodiles. Celui-ci, conscient du défi à relever, cherche de l'aide auprès de son vieil ami Panoramix. Le druide fait le voyage en Égypte avec Astérix et Obélix. De son côté, Amonbofis, l'architecte officiel de Cléopâtre, jaloux que la reine ait choisi Numérobis pour construire le palais, va tout mettre en œuvre pour faire échouer son concurrent.", "Comédie");
+        Film film = new Film(4, "Astérix et Obélix : Mission Cléopâtre", 2023, 112, "Cléopâtre, la reine d’Égypte, décide, pour défier l'Empereur romain Jules César, de construire en trois mois un palais somptueux en plein désert. Si elle y parvient, celui-ci devra concéder publiquement que le peuple égyptien est le plus grand de tous les peuples. Pour ce faire, Cléopâtre fait appel à Numérobis, un architecte d'avant-garde plein d'énergie. S'il réussit, elle le couvrira d'or. S'il échoue, elle le jettera aux crocodiles. Celui-ci, conscient du défi à relever, cherche de l'aide auprès de son vieil ami Panoramix. Le druide fait le voyage en Égypte avec Astérix et Obélix. De son côté, Amonbofis, l'architecte officiel de Cléopâtre, jaloux que la reine ait choisi Numérobis pour construire le palais, va tout mettre en œuvre pour faire échouer son concurrent.", "Comédie");
 
         //Envoyer le film dans le model
         model.addAttribute("film", film);
@@ -98,6 +118,9 @@ public class FilmController {
         if (bindingResult.hasErrors()) {
             System.out.println("Erreur de contrôle surface");
         }
+
+        //On sauvegarde le film en BDD
+        filmManager.saveFilm(film);
 
         //rediriger sur ta page d'accueil
         return "/form/film-formulaire-v3";
