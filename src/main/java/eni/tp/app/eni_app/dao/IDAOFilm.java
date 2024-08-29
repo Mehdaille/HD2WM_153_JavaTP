@@ -7,7 +7,7 @@ import java.util.List;
 public interface IDAOFilm {
     List<Film> selectFilms();
 
-    Film selectFilmById(long id);
+    Film selectFilmById(Long id);
 
    void save (Film film);
 }

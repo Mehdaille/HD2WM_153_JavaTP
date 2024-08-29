@@ -71,7 +71,7 @@ public class FilmController {
     }
 
     @GetMapping("details-film/{id}")
-    public String showFilm(@PathVariable("id") long id, Model model) {
+    public String showFilm(@PathVariable("id") Long id, Model model) {
         //Retourne le nom du fichier HTML à charger
         //PS : A partir du dossier template
         //ressources/templates est la racine des fichiers html
@@ -98,11 +98,24 @@ public class FilmController {
         return "/auth/user-page";
     }
 
-    @GetMapping("show-film-formulaire")
-    public String showAddFilm(Model model) {
-
+    /**
+     * Soi je vais dans la page formulaire avec un id (donc edition)
+     * Ou soi je vais dans la page formulaire sans id (donc creation)
+     * @param model
+     * @return
+     */
+    @GetMapping({"show-film-formulaire/{id}", "show-film-formulaire"})
+    public String showAddFilm(@PathVariable(required=false) Long id, Model model) {
         //Instancier un film apr défaut
-        Film film = new Film(4, "Astérix et Obélix : Mission Cléopâtre", 2023, 112, "Cléopâtre, la reine d’Égypte, décide, pour défier l'Empereur romain Jules César, de construire en trois mois un palais somptueux en plein désert. Si elle y parvient, celui-ci devra concéder publiquement que le peuple égyptien est le plus grand de tous les peuples. Pour ce faire, Cléopâtre fait appel à Numérobis, un architecte d'avant-garde plein d'énergie. S'il réussit, elle le couvrira d'or. S'il échoue, elle le jettera aux crocodiles. Celui-ci, conscient du défi à relever, cherche de l'aide auprès de son vieil ami Panoramix. Le druide fait le voyage en Égypte avec Astérix et Obélix. De son côté, Amonbofis, l'architecte officiel de Cléopâtre, jaloux que la reine ait choisi Numérobis pour construire le palais, va tout mettre en œuvre pour faire échouer son concurrent.", "Comédie");
+        //Film film = new Film();
+        Film film = new Film("Astérix et Obélix : Mission Cléopâtre", 2023, 112, "Cléopâtre, la reine d’Égypte, décide, pour défier l'Empereur romain Jules César, de construire en trois mois un palais somptueux en plein désert. Si elle y parvient, celui-ci devra concéder publiquement que le peuple égyptien est le plus grand de tous les peuples. Pour ce faire, Cléopâtre fait appel à Numérobis, un architecte d'avant-garde plein d'énergie. S'il réussit, elle le couvrira d'or. S'il échoue, elle le jettera aux crocodiles. Celui-ci, conscient du défi à relever, cherche de l'aide auprès de son vieil ami Panoramix. Le druide fait le voyage en Égypte avec Astérix et Obélix. De son côté, Amonbofis, l'architecte officiel de Cléopâtre, jaloux que la reine ait choisi Numérobis pour construire le palais, va tout mettre en œuvre pour faire échouer son concurrent.", "Comédie", "https://fr.web.img3.acsta.net/c_310_420/pictures/23/06/21/12/06/4953335.jpg");
+
+        //S'il y un id, le film on le récupère grace à l'id
+        //PS : On écrase le iflm vide qu'on voulait afficher dans le form
+        //Donc on affichera un film existant dans le formulaire
+        if (id != null) {
+            film = filmManager.getFilmById(id);
+        }
 
         //Envoyer le film dans le model
         model.addAttribute("film", film);
@@ -111,8 +124,10 @@ public class FilmController {
         return "/form/film-formulaire-v3";
     }
 
-    @PostMapping("show-film-formulaire")
-    public String showFilmAdded(@Valid @ModelAttribute Film film, BindingResult bindingResult) {
+
+
+    @PostMapping( "show-film-formulaire")
+    public String showFilmAdded(@Valid @ModelAttribute Film film, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         //Tu récupère le film grâce au @ModelAttribute
 
         if (bindingResult.hasErrors()) {
@@ -122,7 +137,10 @@ public class FilmController {
         //On sauvegarde le film en BDD
         filmManager.saveFilm(film);
 
+        //Ajouter un message temporaire (flash message)
+        redirectAttributes.addFlashAttribute("flashMessage", new EniFlashMessage(EniFlashMessage.TYPE_FLASH_SUCCESS, "Le film a été ajouté à la liste de film"));
+
         //rediriger sur ta page d'accueil
-        return "/form/film-formulaire-v3";
+        return "redirect:/";
     }
 }

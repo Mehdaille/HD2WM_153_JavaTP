@@ -16,6 +16,9 @@
 
         <form th:object="${film}" method="post" action="/show-film-formulaire">
 
+            <!-- id -->
+            <input th:field="*{id}" type="hidden">
+
             <!-- Champ titre -->
             <div class="uk-margin">
                 <label class="uk-form-label" for="title">Titre</label>
@@ -59,6 +62,18 @@
                     <input th:field="*{genre}" class="uk-input" type="text" placeholder="Saisir le genre"></input>
                     <ul th:if="${#fields.hasErrors('genre')}">
                         <li class="uk-form-danger" th:each="error:${#fields.errors('genre')}" th:text="${error}">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Champ image -->
+            <div class="uk-margin">
+                <label class="uk-form-label" for="image">Image</label>
+                <div class="uk-form-controls">
+                    <input th:field="*{image}" class="uk-input" type="text" placeholder="Saisir l'url de l'image"></input>
+                    <ul th:if="${#fields.hasErrors('image')}">
+                        <li class="uk-form-danger" th:each="error:${#fields.errors('image')}" th:text="${error}">
                         </li>
                     </ul>
                 </div>

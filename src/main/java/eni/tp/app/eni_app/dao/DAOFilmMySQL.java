@@ -25,13 +25,14 @@ public class DAOFilmMySQL implements IDAOFilm {
         public Film mapRow(ResultSet rs, int rowNum) throws SQLException {
             Film film = new Film();
 
-            film.id = rs.getInt("id");
+            film.id = rs.getLong("id");
             film.title = rs.getString("title");
             film.note = rs.getInt("note");
             film.year = rs.getInt("year");
             film.duration = rs.getInt("duration");
             film.synopsis = rs.getString("synopsis");
             film.genre = rs.getString("genre");
+            film.image = rs.getString("image");
 
             return film;
         }
@@ -43,7 +44,7 @@ public class DAOFilmMySQL implements IDAOFilm {
     }
 
     @Override
-    public Film selectFilmById(long id) {
+    public Film selectFilmById(Long id) {
 
         List<Film> films = jdbcTemplate.query("SELECT * FROM film WHERE id = ?", FILM_ROW_MAPPER, id);
 
@@ -58,8 +59,16 @@ public class DAOFilmMySQL implements IDAOFilm {
 
     @Override
     public void save(Film film) {
+        //Tester si il existe en base, SI OUI => UPDATE, SINON => INSERT
+        if (film.getId() != null && selectFilmById(film.getId()) != null) {
+            //Update en base un aliment
+            jdbcTemplate.update("UPDATE film SET title = ?, note = ?, year = ?, duration = ?, synopsis = ?, genre = ? , image = ? WHERE id = ?", film.title, film.note, film.year, film.duration, film.synopsis, film.genre, film.image, film.id);
+
+            //PS : return = Arrêter la fonction
+            return;
+        }
 
         //Inserer en base un aliment
-        jdbcTemplate.update("INSERT INTO film(id, title, note, year, duration, synopsis, genre) VALUES (?, ?, ?, ?, ?, ?, ?)", film.id, film.title, film.note, film.year, film.duration, film.synopsis, film.genre);
+        jdbcTemplate.update("INSERT INTO film(title, note, year, duration, synopsis, genre, image) VALUES (?, ?, ?, ?, ?, ?, ?)", film.title, film.note, film.year, film.duration, film.synopsis, film.genre, film.image);
     }
 }

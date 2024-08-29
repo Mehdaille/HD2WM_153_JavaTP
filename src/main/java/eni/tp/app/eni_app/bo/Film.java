@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Positive;
 
 public class Film {
 
-    public long id;
+    public Long id;
     @NotBlank(message = "Le titre doit être renseigné")
     public String title;
     //temporaire => note = association d'avis
@@ -21,19 +21,31 @@ public class Film {
     public String synopsis;
     @NotBlank(message = "Le genre doit être renseigné")
     public String genre;
-
+    @NotBlank(message = "L'image doit être renseignée")
+    public String image;
 
     public Film() {
         super();
     }
 
-    public Film(long id, String title, int year, int duration, String synopsis, String genre) {
+    public Film(String title, int year, int duration, String synopsis, String genre, String image) {
+        this.title = title;
+        this.title = title;
+        this.year = year;
+        this.duration = duration;
+        this.synopsis = synopsis;
+        this.genre = genre;
+        this.image = image;
+    }
+
+    public Film(Long id, String title, int year, int duration, String synopsis, String genre, String image) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.duration = duration;
         this.synopsis = synopsis;
         this.genre = genre;
+        this.image = image;
     }
 
     //    Récupère la note dans une format int
@@ -45,11 +57,11 @@ public class Film {
         return note;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -95,5 +107,13 @@ public class Film {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

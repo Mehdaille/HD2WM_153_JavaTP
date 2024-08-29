@@ -1,0 +1,30 @@
+//Dans MySQL :
+//Pour créer la table "film":
+USE db_film;
+
+CREATE TABLE film (
+	id int NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255),
+    note int,
+    year int,
+    duration int,
+    synopsis TEXT,
+    genre VARCHAR(255),
+    image TEXT,
+    PRIMARY KEY(id)
+) Engine=InnoDB;
+
+
+
+//A insérer dans la table :
+INSERT INTO film (id, title, note, year, duration, synopsis, genre, image) VALUES
+(1, 'Inception', 5, 2010, 148, 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.', 'Science Fiction','https://fr.web.img6.acsta.net/c_310_420/medias/nmedia/18/72/34/14/19476654.jpg'),
+(2, 'The Godfather', 5, 1972, 175, 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.', 'Crime', 'https://fr.web.img6.acsta.net/c_310_420/pictures/22/01/14/08/39/1848157.jpg'),
+(3, 'The Dark Knight', 5, 2008, 152, 'When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.', 'Action', 'https://fr.web.img6.acsta.net/c_310_420/medias/nmedia/18/63/97/89/18949761.jpg'),
+(4, 'Pulp Fiction', 4, 1994, 154, 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 'Crime', 'https://fr.web.img2.acsta.net/c_310_420/medias/nmedia/18/36/02/52/18846059.jpg'),
+(5, 'Schindler\'s List', 5, 1993, 195, 'In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.', 'Biography', 'https://fr.web.img4.acsta.net/c_310_420/pictures/19/03/14/10/37/5927961.jpg'),
+(6, 'The Shawshank Redemption', 5, 1994, 142, 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', 'Drama', 'https://fr.web.img6.acsta.net/c_310_420/medias/nmedia/18/63/30/68/18686447.jpg'),
+(7, 'Fight Club', 4, 1999, 139, 'An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.', 'Drama', 'https://fr.web.img6.acsta.net/c_310_420/pictures/19/04/08/14/11/0688770.jpg'),
+(8, 'Forrest Gump', 4, 1994, 142, 'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold from the perspective of an Alabama man with an IQ of 75.', 'Drama', 'https://fr.web.img2.acsta.net/c_310_420/pictures/15/10/13/15/12/514297.jpg'),
+(9, 'The Matrix', 5, 1999, 136, 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', 'Science Fiction', 'https://fr.web.img4.acsta.net/c_310_420/medias/04/34/49/043449_af.jpg'),
+(10, 'Gladiator', 4, 2000, 155, 'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.', 'Action', 'https://fr.web.img5.acsta.net/c_310_420/medias/nmedia/18/68/64/41/19254510.jpg');
