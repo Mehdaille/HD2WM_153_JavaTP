@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="fr"
+      layout:decorate="~{layout/base}">
+<!-- Surcharger le title -->
+<title layout:fragment="title">Liste des films</title>
 <body>
-
+<div layout:fragment="content">
+    <h1>Erreur</h1>
+    <p>Le film que vous essayez d'afficher n'existe pas</p>
+</div>
 </body>
 </html>

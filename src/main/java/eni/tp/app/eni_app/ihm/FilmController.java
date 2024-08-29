@@ -1,10 +1,9 @@
-package eni.tp.app.eni_app;
+package eni.tp.app.eni_app.ihm;
 
 import eni.tp.app.eni_app.bll.FilmManager;
 
 import eni.tp.app.eni_app.bo.Film;
 import eni.tp.app.eni_app.bo.User;
-import eni.tp.app.eni_app.ihm.EniFlashMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;

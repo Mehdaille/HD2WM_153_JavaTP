@@ -34,7 +34,7 @@
     </div>
 
     <div class="uk-navbar-right eni-navbar-btn-padding">
-<!--affichage d'un bouton si loggedUser == null => c'est à dire si pas connécté-->
+        <!--affichage d'un bouton si loggedUser == null => c'est à dire si pas connécté-->
         <a th:if="${loggedUser == null}" class="uk-icon-button" href="/login"><i class="fas fa-sign-in-alt"></i></a>
 
         <!--affichage d'un bouton si loggedUser != null => c'est à dire si déjà connécté-->
@@ -47,20 +47,26 @@
             <li>
                 <a th:if="${loggedUser}" th:text="${loggedUser.email}" href="show-user-page"></a>
             </li>
-            <li class="uk-active"><a href="/">Accueil</a></li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">Contact</a></li>
+            <li class="uk-active">
+                <a href="/">Accueil</a>
+            </li>
+            <li>
+                <a href="#">À propos</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
             <li class="uk-active">
                 <a href="show-film-formulaire">Ajouter un film</a>
             </li>
-            <li class="language-selector">
-                <label for="language">Choisissez la langue:</label>
-                <select id="language" name="language">
-                    <option value="en"><a href="http://localhost:8080/change-lang/en">English</a></option>
-                    <option value="fr" selected href="http://localhost:8080/change-lang/fr">Français</option>
-                    <option value="es" href="http://localhost:8080/change-lang/zh">Chinois</option>
-                    <!-- Ajoute d'autres langues ici -->
-                </select>
+            <li>
+                <a href="http://localhost:8080/change-lang/en">English</a>
+            </li>
+            <li>
+                <a href="http://localhost:8080/change-lang/fr">Français</a>
+            </li>
+            <li>
+                <a href="http://localhost:8080/change-lang/zh">Chinois</a>
             </li>
         </ul>
     </div>
@@ -74,7 +80,6 @@
         <p th:text="${flashMessage.message}"></p>
     </div>
 </div>
-
 
 
 <!--Partie surchargable-->

@@ -1,9 +1,7 @@
-package eni.tp.app.eni_app;
+package eni.tp.app.eni_app.ihm;
 
 
 import eni.tp.app.eni_app.bo.User;
-import eni.tp.app.eni_app.ihm.EniFlashMessage;
-import eni.tp.app.eni_app.ihm.EniIHMHelpers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

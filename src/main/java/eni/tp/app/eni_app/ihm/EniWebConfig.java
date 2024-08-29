@@ -1,4 +1,4 @@
-package eni.tp.app.eni_app;
+package eni.tp.app.eni_app.ihm;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
