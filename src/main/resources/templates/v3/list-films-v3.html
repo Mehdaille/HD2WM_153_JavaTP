@@ -28,10 +28,12 @@
 
                             <h3 class="uk-card-title" th:text="${film.title}"></h3>
                             <div>
+                                <p th:text="${'Genre : '+ film.genre}"></p>
                                 <span th:text="${'Année : ' + film.year}"></span>
                                 -
                                 <span th:text="${'Durée : ' + film.duration + ' min'}"> min</span>
                             </div>
+                            <p></p>
                             <div>
                                 <!--Remplace les étoiles par une fonction qui n'affiche que 3 étoiles sur 5, voir le controller-->
                                 <i th:each="star:${maxStars}" class="fa fa-star"
