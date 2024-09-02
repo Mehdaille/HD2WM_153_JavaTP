@@ -1,9 +1,14 @@
 package eni.tp.app.eni_app.ihm;
 
 
+import eni.tp.app.eni_app.bll.AuthManager;
+import eni.tp.app.eni_app.bll.EniManagerResponse;
 import eni.tp.app.eni_app.bo.User;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class AuthController {
 
+    @Autowired
+    AuthManager authManager;
 
     @GetMapping("login")
     public String showLogin(Model model, RedirectAttributes redirectAttributes) {
@@ -39,10 +46,28 @@ public class AuthController {
     }
 
     @PostMapping("user")
-    public String showUser(@ModelAttribute User user, Model model, RedirectAttributes redirectAttributes) {
+    public String showUser(@Valid @ModelAttribute(name="user") User user, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
         //Tu récupère l'user grâce au @ModelAttribute
 
-        //Mettre l'user dans la session
+        //1 : Contrôle de surface
+
+        //Erreur : si controle de surface
+        if (bindingResult.hasErrors()) {
+            return "/auth/login-page";
+        }
+
+        //2 : Contrôle métier (le manager)
+        EniManagerResponse<User> response = authManager.authenticate(user.email, user.password);
+
+
+        //Erreur code 756 retourner la page avec l'erreur métier
+        if(response.code.equals("756")){
+            //TODO : Pendant qu'on retourne la page de connexion (envoyer l'erreur métier)
+            return "auth/login-page";
+        }
+
+        //3 : Connecter l'user en session
+        //Mettre l'user retrouvé en base et le mettre dans la session
         model.addAttribute("loggedUser", user);
         System.out.println(String.format("L'email %s a été sauvegardé", user.email));
 

@@ -1,7 +1,10 @@
 package eni.tp.app.eni_app.bo;
 
+import jakarta.validation.constraints.Email;
+
 public class User {
 
+    @Email
     public String email;
     public String password;
 
