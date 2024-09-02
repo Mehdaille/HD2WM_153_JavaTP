@@ -30,7 +30,8 @@
                             <p th:text="'Note : ' + ${film.note}"></p>
                             <p th:text="'Synopsis : ' + ${film.synopsis}"></p>
                             <div class="uk-margin">
-                                <a class="uk-button uk-button-primary" th:href ="@{'/show-film-formulaire/' + ${film.id}}">Modifier film</a>
+                                <a class="uk-button uk-button-primary"
+                                   th:href="@{'/show-film-formulaire/' + ${film.id}}">Modifier film</a>
                             </div>
                         </div>
                     </div>
